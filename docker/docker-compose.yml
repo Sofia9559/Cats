@@ -1,0 +1,25 @@
+version: '3.1'
+
+services:
+  app:
+    image: 'fa31019644e29c2e9beb5924c500c47d0b9921e3e2c928698c668b75192d0856'
+    container_name: app
+    expose:
+      - '8080'
+    ports:
+      - '8080:8080'
+    environment:
+      DB_USER: sofa
+      DB_PASSWORD: 12345
+      DB_URL: jdbc:postgresql://db:5432/postgres
+    depends_on:
+      - db
+  db:
+    image: 'postgres'
+    container_name: db
+    expose:
+      - '5432'
+    environment:
+      POSTGRES_USER: sofa
+      POSTGRES_PASSWORD: 12345
+
